@@ -1,0 +1,26 @@
+<cms:capture into='pagination_output' 'global'>
+<nav class="col-12 pagination-area text-center">
+<ul class="pagination">
+<cms:paginator adjacents='1'>
+<cms:if k_crumb_type='prev' >
+<li><a href="<cms:show_with_lc k_crumb_link />" class="<cms:if k_crumb_disabled>disabled</cms:if> prev" <cms:if k_crumb_disabled>onClick="return false"</cms:if> title="«">«</a></li>
+<cms:set has_pagination_output='1' 'global'/>
+</cms:if>
+<cms:if k_crumb_type='ellipsis' >
+<li><a class="disabled" href="#" onClick="return false" title="...">&hellip;</a></li>
+<cms:set has_pagination_output='1' 'global'/>
+</cms:if>
+<cms:if k_crumb_type='page' >
+<li><a href="<cms:show_with_lc k_crumb_link />" class="<cms:if k_crumb_current>current text-white</cms:if>" <cms:if k_crumb_current>onClick="return false"</cms:if> title="<cms:show k_crumb_text />"><cms:show k_crumb_text /></a></li>
+<cms:set has_pagination_output='1' 'global'/>
+</cms:if>
+<cms:if k_crumb_type='next' >
+<li><a href="<cms:show_with_lc k_crumb_link />" class="<cms:if k_crumb_disabled>disabled</cms:if> next" <cms:if k_crumb_disabled>onClick="return false"</cms:if> title="»">»</a></li>
+<cms:set has_pagination_output='1' 'global'/>
+</cms:if>
+</cms:paginator>
+</ul>
+</nav>
+</cms:capture>
+
+

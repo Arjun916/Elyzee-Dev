@@ -1,0 +1,203 @@
+Options +SymLinksIfOwnerMatch -MultiViews
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+#If your website is installed in a subfolder, change the line below to reflect the path to the subfolder.
+#e.g. for http://www.example.com/subdomain1/subdomain2/ make it RewriteBase /subdomain1/subdomain2
+RewriteBase /
+
+#If you wish to use a custom 404 page, place a file named 404.php in your website's root and uncomment the line below.
+#If your website is installed in a subfolder, change the line below to reflect the path to the subfolder.
+#e.g. for http://www.example.com/subdomain1/subdomain2/ make it ErrorDocument 404 /subdomain1/subdomain2/404.php
+ErrorDocument 404 /404.php
+
+#If your site begins with 'www', uncomment the following two lines
+#RewriteCond %{HTTP_HOST} !^www\.
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+RewriteRule ^(?:en|ar)$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/$ index.php?lc=$1 [L,QSA]
+
+
+#DO NOT EDIT BELOW THIS
+
+
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule . - [L]
+
+#globals.php
+RewriteRule ^(?:en|ar)/globals$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/globals/$ globals.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/globals/.*?([^\.\/]*)\.html$ globals.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/globals/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ globals.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/globals/[^\.]*?([^/\.]*)/$ globals.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/globals/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#insights.php
+RewriteRule ^(?:en|ar)/insights$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/insights/$ insights.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/insights/.*?([^\.\/]*)\.html$ insights.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/insights/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ insights.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/insights/[^\.]*?([^/\.]*)/$ insights.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/insights/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#about.php
+RewriteRule ^(?:en|ar)/about$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/about/$ about.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/about/.*?([^\.\/]*)\.html$ about.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/about/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ about.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/about/[^\.]*?([^/\.]*)/$ about.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/about/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#services.php
+RewriteRule ^(?:en|ar)/services$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/services/$ services.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/services/.*?([^\.\/]*)\.html$ services.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/services/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ services.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/services/[^\.]*?([^/\.]*)/$ services.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/services/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+
+#contact.php
+RewriteRule ^(?:en|ar)/contact$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/contact/$ contact.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/contact/.*?([^\.\/]*)\.html$ contact.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/contact/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ contact.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/contact/[^\.]*?([^/\.]*)/$ contact.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/contact/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+
+#doctors.php
+RewriteRule ^(?:en|ar)/doctors$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/doctors/$ doctors.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/doctors/.*?([^\.\/]*)\.html$ doctors.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/doctors/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ doctors.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/doctors/[^\.]*?([^/\.]*)/$ doctors.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/doctors/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#insurance.php
+RewriteRule ^(?:en|ar)/insurance$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/insurance/$ insurance.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/insurance/.*?([^\.\/]*)\.html$ insurance.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/insurance/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ insurance.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/insurance/[^\.]*?([^/\.]*)/$ insurance.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/insurance/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#careers.php
+RewriteRule ^(?:en|ar)/careers$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/careers/$ careers.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/careers/.*?([^\.\/]*)\.html$ careers.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/careers/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ careers.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/careers/[^\.]*?([^/\.]*)/$ careers.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/careers/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#book-appointment.php
+RewriteRule ^(?:en|ar)/book-appointment$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/book-appointment/$ book-appointment.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/book-appointment/.*?([^\.\/]*)\.html$ book-appointment.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/book-appointment/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ book-appointment.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/book-appointment/[^\.]*?([^/\.]*)/$ book-appointment.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/book-appointment/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#feedback.php
+RewriteRule ^(?:en|ar)/feedback$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/feedback/$ feedback.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/feedback/.*?([^\.\/]*)\.html$ feedback.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/feedback/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ feedback.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/feedback/[^\.]*?([^/\.]*)/$ feedback.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/feedback/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#503.php
+RewriteRule ^503$ "$0/" [R=301,L,QSA]
+RewriteRule ^503/$ 503.php [L,QSA]
+RewriteRule ^503/.*?([^\.\/]*)\.html$ 503.php?pname=$1 [L,QSA]
+RewriteRule ^503/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ 503.php?d=$1$2$3 [L,QSA]
+RewriteRule ^503/[^\.]*?([^/\.]*)/$ 503.php?fname=$1 [L,QSA]
+RewriteRule ^503/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#notice.php
+RewriteRule ^(?:en|ar)/notice$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/notice/$ notice.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/notice/.*?([^\.\/]*)\.html$ notice.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/notice/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ notice.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/notice/[^\.]*?([^/\.]*)/$ notice.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/notice/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#search.php
+RewriteRule ^(?:en|ar)/search$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/search/$ search.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/search/.*?([^\.\/]*)\.html$ search.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/search/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ search.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/search/[^\.]*?([^/\.]*)/$ search.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/search/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#news-events.php
+RewriteRule ^(?:en|ar)/news-events$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/news-events/$ news-events.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/news-events/.*?([^\.\/]*)\.html$ news-events.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/news-events/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ news-events.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/news-events/[^\.]*?([^/\.]*)/$ news-events.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/news-events/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#404.php
+RewriteRule ^404$ "$0/" [R=301,L,QSA]
+RewriteRule ^404/$ 404.php [L,QSA]
+RewriteRule ^404/.*?([^\.\/]*)\.html$ 404.php?pname=$1 [L,QSA]
+RewriteRule ^404/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ 404.php?d=$1$2$3 [L,QSA]
+RewriteRule ^404/[^\.]*?([^/\.]*)/$ 404.php?fname=$1 [L,QSA]
+RewriteRule ^404/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#survey.php
+RewriteRule ^(?:en|ar)/survey$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/survey/$ survey.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/survey/.*?([^\.\/]*)\.html$ survey.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/survey/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ survey.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/survey/[^\.]*?([^/\.]*)/$ survey.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/survey/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#testimonials.php
+RewriteRule ^(?:en|ar)/testimonials$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/testimonials/$ testimonials.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/testimonials/.*?([^\.\/]*)\.html$ testimonials.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/testimonials/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ testimonials.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/testimonials/[^\.]*?([^/\.]*)/$ testimonials.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/testimonials/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#privacy-policy.php
+RewriteRule ^(?:en|ar)/privacy-policy$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/privacy-policy/$ privacy-policy.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/privacy-policy/.*?([^\.\/]*)\.html$ privacy-policy.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/privacy-policy/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ privacy-policy.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/privacy-policy/[^\.]*?([^/\.]*)/$ privacy-policy.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/privacy-policy/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#before-after.php
+RewriteRule ^(?:en|ar)/before-after$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/before-after/$ before-after.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/before-after/.*?([^\.\/]*)\.html$ before-after.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/before-after/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ before-after.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/before-after/[^\.]*?([^/\.]*)/$ before-after.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/before-after/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#sitemap.php
+RewriteRule ^(?:en|ar)/sitemap$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/sitemap/$ sitemap.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/sitemap/.*?([^\.\/]*)\.html$ sitemap.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/sitemap/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ sitemap.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/sitemap/[^\.]*?([^/\.]*)/$ sitemap.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/sitemap/[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+
+#rss.php
+RewriteRule ^(?:en|ar)/rss$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/rss/$ rss.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/rss/(.+?)$ rss.php?q=$2&lc=$1 [L,QSA]
+
+#index.php
+RewriteRule ^(?:en|ar)$ "$0/" [R=301,L,QSA]
+RewriteRule ^(en|ar)/$ index.php?lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/.*?([^\.\/]*)\.html$ index.php?pname=$2&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/([1-2]\d{3})/(?:(0[1-9]|1[0-2])/(?:(0[1-9]|1[0-9]|2[0-9]|3[0-1])/)?)?$ index.php?d=$2$3$4&lc=$1 [L,QSA]
+RewriteRule ^(en|ar)/[^\.]*?([^/\.]*)/$ index.php?fname=$2&lc=$1 [L,QSA]
+RewriteRule ^(?:en|ar)/\w[^\.]*?([^/\.]*)$ "$0/" [R=301,L,QSA]
+</IfModule>

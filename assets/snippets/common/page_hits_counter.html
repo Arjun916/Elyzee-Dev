@@ -1,0 +1,48 @@
+	<cms:if k_is_page>
+	    <cms:no_cache />
+
+	    <cms:php>
+	        // identify bots
+	        global $CTX;
+	        if( isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']) ){
+	            $CTX->set( 'is_bot', '1', 'global' );
+	        }        
+	    </cms:php>
+   
+	    <cms:if "<cms:not is_bot />">
+	        <cms:db_persist 
+	            _masterpage=k_template_name 
+	            _page_id=k_page_id 
+	            _mode='edit'
+	            page_hits="<cms:add page_hits '1' />"
+	        /> 
+	    </cms:if>
+	<cms:else/>
+	    <cms:no_cache />
+
+	    <cms:php>
+	        // identify bots
+	        global $CTX;
+	        if( isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']) ){
+	            $CTX->set( 'is_bot', '1', 'global' );
+	        }        
+	    </cms:php>
+   
+	    <cms:if "<cms:not is_bot />">
+		<cms:if k_is_list>
+		<cms:set page_hits_g = "<cms:get_global 'page_hits'/>"/>
+		<cms:db_persist 
+		    _masterpage  = "<cms:show k_template_name/>__globals"
+		    _mode  = "edit"
+		    page_hits="<cms:add page_hits_g '1' />" 
+		>
+		</cms:db_persist>
+		<cms:else/>
+			<cms:db_persist 
+			    _masterpage  = "<cms:show k_template_name/>"
+			    _mode  = "edit"
+			    page_hits="<cms:add page_hits '1' />" 
+			></cms:db_persist>
+		 </cms:if>
+		  </cms:if>
+	</cms:if>

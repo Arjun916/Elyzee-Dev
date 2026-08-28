@@ -1,0 +1,36 @@
+<!-- F.A.Q Section -->
+<cms:capture into='faq_output'>  
+<cms:get_global 'mainpage_faqs' masterpage="payment-plans.php">
+<cms:show_repeatable k_field_name >
+<cms:set faq_heading_temp = "mainpage_faq_title_<cms:show k_lang/>" />
+<cms:set faq_heading_val="<cms:get faq_heading_temp />" />
+
+<cms:set faq_content_temp = "mainpage_faq_desc_<cms:show k_lang/>" />
+<cms:set faq_content_val="<cms:get faq_content_temp />" />
+
+<cms:if faq_heading_val && faq_content_val >
+<cms:set has_faq = '1' 'global' />
+
+<div class="accordion-item py-2 <cms:if k_count le '1'>opened</cms:if> bg-transparent">
+
+<div class="accordion__header" data-toggle="collapse" data-target="#faq<cms:show k_count/>">
+<a class="accordion__title" href="#" title="<cms:show faq_heading_val />"><small><cms:show faq_heading_val /></small></a>
+</div>
+
+<div id="faq<cms:show k_count/>" class="collapse <cms:if k_count le '1'>show</cms:if>" data-parent="#plans_faq">
+<div class="accordion__body bg-transparent pt-1">
+<div class="list-items small text-dark pl-3"><cms:do_shortcodes><cms:show faq_content_val /></cms:do_shortcodes></div>
+</div>
+</div>
+</div>
+</cms:if>
+
+</cms:show_repeatable>
+</cms:get_global>
+</cms:capture>
+
+
+<cms:if has_faq >
+<div id="plans_faq"><cms:show faq_output/></div>
+</cms:if>
+

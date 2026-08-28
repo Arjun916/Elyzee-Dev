@@ -1,0 +1,15 @@
+<div class="portfolio-container row row-flex">
+	<cms:pages masterpage="packages.php" paginate='1' limit='60' orderby="weight" order="desc">
+	
+	<cms:if (is_promotion eq 'Yes') && (pp_price gt pp_discount_price)>
+	<cms:set end_val ="<cms:date end_date format='Y-m-d'/> 23:59:59" />
+	<cms:set curr_val ="<cms:date format='Y-m-d H:i:s' />" />
+	<cms:if end_val ge curr_val>
+		<cms:set has_promotion='1' 'global'/>
+	</cms:if>
+	</cms:if>
+	<cms:if has_promotion && has_promotion eq '1'>
+	<cms:trim "<cms:embed 'packages/tile_view.html' />"/>
+	</cms:if>
+	</cms:pages>
+</div>

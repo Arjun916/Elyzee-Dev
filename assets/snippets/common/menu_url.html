@@ -1,0 +1,11 @@
+<cms:if is_redirection && is_redirection eq 'Yes'>
+<cms:set url_temp = "url_<cms:show k_lang/>" />
+<cms:set url_val="<cms:get url_temp />" 'global' />
+<cms:if is_blank && is_blank eq 'Yes'>	<cms:set target_val='Yes' 'global'/></cms:if>
+<cms:else/>
+<cms:set url_val="<cms:show_with_lc k_nestedpage_link/>" 'global' />
+</cms:if>
+<a href="<cms:show url_val />" <cms:if target_val && target_val eq 'Yes'>target=_blank</cms:if> <cms:if k_is_current>class="current"</cms:if>><p class="d-inline" title="<cms:call 'get_page_title' tname=k_template_name pname=k_page_name />"><cms:call 'get_page_title' tname=k_template_name pname=k_page_name /></p></a>
+
+<cms:set url_val="" 'global' />
+<cms:set target_val="" 'global'/>

@@ -1,0 +1,55 @@
+<cms:embed 'emails/email_header.html'/>
+<table bgcolor="#fdfeff" border="0" cellpadding="0" cellspacing="0" style="width:100%;border:1px solid #d3dee4">
+	<tbody>
+		<tr>
+			<td colspan="3" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff">
+				Personal Details
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Name
+			</td>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Email
+			</td>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Phone
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_contact_name/>
+			</td>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_user_email/>
+			</td>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:if frm_user_phone><cms:show frm_user_phone/><cms:else/>-</cms:if>
+			</td>
+		</tr>
+                         
+		<tr>
+			<td colspan="3" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff">
+				Subject
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:15px 5px 15px 10px">
+				<cms:show frm_user_subject/>
+			</td>
+		</tr>
+	
+		<tr>
+			<td colspan="3" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff">
+				Message
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" style="vertical-align:top;	-family:Arial,Helvetica,sans-serif;font-size:15px;padding:15px 5px 15px 10px">
+				<cms:if frm_user_message><cms:show frm_user_message/><cms:else/>-</cms:if>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<cms:embed 'emails/email_footer.html'/>

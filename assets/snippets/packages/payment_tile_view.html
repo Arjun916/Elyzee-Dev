@@ -1,0 +1,36 @@
+
+<cms:if k_page_foldertitle && k_page_foldertitle ne ''>
+<cms:set curr_category_title_temp ="title_<cms:show k_lang/>" />
+<cms:pages masterpage='multi_lang_folder.php' page_title=k_page_foldertitle limit='1'>
+<cms:set curr_category_title = "<cms:get curr_category_title_temp/>" 'global'/>
+<cms:if category_bgcolor && category_bgcolor ne ''>
+<cms:set curr_category_bgcolor = "style='background-color:<cms:show category_bgcolor/> !important;'" 'global'/>
+</cms:if>
+</cms:pages>
+</cms:if>
+
+<div class="col-sm-12 col-md-6 col-lg-4 mb-4 portfolio-item <cms:show k_page_foldername/>">
+
+<div role="button" class="feature-item d-block dark link_area" data-href="<cms:show_with_lc k_page_link/>" title="<cms:get 'locale.view_details'/>" aria-label="<cms:get 'locale.view_details'/>" <cms:show curr_category_bgcolor/>>
+	
+<div class="d-block overflow-hidden rounded-lg position-relative">
+	<img src="<cms:thumbnail page_image quality='100' width='496' height='279' enforce_max='1'/>" alt="<cms:get 'locale.view_details'/>" class="w-100 lazy rounded-lg" style="transition:transform .2s">
+</div>
+	
+<div class="feature__content pt-3">
+	<h4 class="feature__title"><cms:call 'get_page_title' tname=k_template_name pname=k_page_name/>
+	<cms:set sub_title_temp = "sub_title_<cms:show k_lang/>"/>
+	<cms:set sub_title_val = "<cms:get sub_title_temp/>"/>
+	<cms:if sub_title_val><small class="d-block mt-1"><cms:show sub_title_val/></small></cms:if>
+	</h4>
+
+</div>
+<span class="btn__link" aria-hidden="true"><i class="icon-arrow-right icon-outlined"></i></span>
+<cms:if curr_category_title && curr_category_title ne ''>
+<span class="badge rounded bg-light text-dark m-2" style="position:absolute !important;top:0;"><cms:show curr_category_title/></span>
+</cms:if>
+</div>
+</div>
+
+<cms:set curr_category_title='' 'global'/>
+<cms:set curr_category_bgcolor='' 'global'/>

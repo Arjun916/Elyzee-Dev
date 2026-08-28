@@ -1,0 +1,156 @@
+<cms:embed 'emails/email_header.html'/>
+<table bgcolor="#fdfeff" border="0" cellpadding="0" cellspacing="0" style="width:100%; border:1px solid #d3dee4;text-align:left;" align="left" valign="top">
+	<tbody>
+		<tr>
+			<th colspan="2" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff" valign="top">
+				Personal Details
+			</th>
+		</tr>
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Name
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_contact_name/>
+			</td>
+		</tr>
+		<cms:if frm_user_email>
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Email
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_user_email/>
+			</td>
+		</tr>
+		</cms:if>
+			
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Mobile Number
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_user_phone/>
+			</td>
+		</tr>
+		
+		
+		<tr style="background: #eaeaea;">
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Treating Doctor or Technician
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_doctor_technician/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th colspan="2" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff" valign="top">
+				Patient Experience
+			</th>
+		</tr>
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Reception and Registration
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_reception_registration/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Waiting Time
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_waiting_time/>
+			</td>
+		</tr>
+		
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Doctor or Technician Service
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_doctor_technician_service/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Nursing Care
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_nursing_care/>
+			</td>
+		</tr>
+		
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Cleanliness and accessibility of the Hospital and the facilities
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_cleanliness_accessibility/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Aftercare advice provided post treatment
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_aftercare_advice/>
+			</td>
+		</tr>
+		<tr style="background: #eaeaea;">
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Any comments or suggestions
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_user_message/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th colspan="2" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff" valign="top">
+				General
+			</th>
+		</tr>		
+		
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				 Would you recommend Elyzee Hospital?
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_recommend_elyzee/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				Would you like to be contacted regarding your feedback?
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_user_contact_consent/>
+			</td>
+		</tr>
+		
+		<cms:if frm_reach_source>
+		<tr>
+			<th width="30%" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:10px 5px;font-weight:600" valign="top">
+				How did you hear about us?
+			</th>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px" valign="top">
+				<cms:show frm_reach_source/>
+			</td>
+		</tr>
+		</cms:if>
+		
+	</tbody>
+</table>
+<cms:embed 'emails/email_footer.html'/>

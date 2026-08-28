@@ -1,0 +1,160 @@
+
+	/*TOP BAR COLOR*/	
+	.droopmenu-navbar{
+		transition: all 0.2s ease-in-out;
+		background-color:rgba(0, 0, 0, 0);
+		border-bottom: 1px solid rgba(255,255,255,0.15);
+		-webkit-box-shadow:none;
+		-moz-box-shadow:none;
+		box-shadow:none;		 
+	}
+	
+	/* TOP LEVEL MENU COLOR | HOVER COLOR */
+	.droopmenu > li > a,
+	.droopmenu > li > span{ color:#fff; }
+	.droopmenu li:hover > a{ color: #00D87E; }
+	
+	/* TOP LEVEL MENU ROUNDED BUTTON */
+	.droopmenu > li a.droopmenu-button span{ background:#00D87E; border-color:#00D87E; }
+	.droopmenu > li a.droopmenu-button:hover span{ color:#ffffff; }
+
+	
+	/* DROPDOWN | BACKGROUND OR BORDERS  */ 
+	.droopmenu li > ul{ }
+	
+	/* DROPDOWN LINKS | COLOR OR BACKGROUND */ 
+	.droopmenu li li:hover > a{ color: #00D87E; }
+	.droopmenu li ul li a{ }
+	
+	/* MOBILE TAB CONTENT BACKGROUND AND BOTTOM BORDER */
+	.droopmenu .droopmenu-tabcontent { }
+	
+	/* MOBILE TAB HEADER COLOR AND BOTTOM BORDER */
+	.droopmenu .droopmenu-tabheader { }
+	
+	/* MOBILE ACTIVE TAB HEADER  */
+	.droopmenu .droopmenu-tabheader.droopmenu-tab-active{ }
+	
+	/* MENU TOGGLE | HAMBURG COLOR  */
+	.droopmenu-toggle i:after,
+	.droopmenu-toggle i:before{ background: #fff; }
+	
+	/* MEGA MENU HEADERS  */
+	.droopmenu-col h4{ }
+	.demo-home { padding-top:100px; }	
+	
+					
+	@media only screen and (min-width: 768px) {
+		/* TAB BACKGROUND COLOR */
+		.droopmenu .droopmenu-tabnav { }
+		
+		/* TAB LINKS COLOR */
+		.droopmenu .droopmenu-tabnav a { }
+		
+		/* TAB LINKS ARROW BACKGROUND COLOR  + BORDERS BOTTOM & RIGHT COLORS */
+		.droopmenu .droopmenu-tabnav a:after { }
+		
+		/* VERTICAL TABS BACKGROUND */
+		.droopmenu .droopmenu-tabs.droopmenu-tabs-vertical .droopmenu-tabnav{ }
+		
+		/* VERTICAL TABS BORDER LEFT */
+		.droopmenu .droopmenu-tabs.droopmenu-tabs-vertical .droopmenu-tabpanel{ }
+		
+		/* TABS PANEL TOP BORDER */
+		.droopmenu .droopmenu-tabpanel  { }
+		
+		/* ADD HEIGHT TO TOP LEVEL MENUS AND HEADERS */
+		.droopmenu-header{ 
+			height:100px; 
+			transition: height 1s ease-in-out; 
+		}
+		
+		.droopmenu-brand,	
+		.droopmenu > li > a,
+		.droopmenu > li > span{ 
+			height:100px; 
+			line-height:100px; 
+			transition: all 1s ease-in-out; 
+		}
+		
+
+		
+		/* ADD BG COLOR AND SHADOW + ANIMATE HEIGHT ON SCROLL  */
+		.droopmenu-showbg{ 
+			background:#fff;
+			box-shadow: 0 1px 60px rgba(33, 33, 33, .2);
+		}
+		
+		.droopmenu-showbg .droopmenu-header{ height:70px; }
+		.droopmenu-showbg .droopmenu-brand,	
+		.droopmenu-showbg .droopmenu > li > a,
+		.droopmenu-showbg .droopmenu > li > span{ height:70px; line-height:70px;  }				
+		
+		.droopmenu-showbg .droopmenu > li > a,
+		.droopmenu-showbg .droopmenu > li > span{ color:#71818C; }
+		.droopmenu-showbg .droopmenu li:hover > a{ color: #00D87E; }
+		.droopmenu-showbg .droopmenu > li a.droopmenu-button span{ color:#fff; }
+		.droopmenu-brand{
+			transition: all 1s ease-in-out;
+			display: inline-block; 
+			position:relative;
+			top:22px;
+		}
+		
+		.droopmenu-showbg .droopmenu-brand{ top:15px; }
+		.droopmenu-brand .dmlogo-light{ display:block; }
+		.droopmenu-brand .dmlogo-dark{ display:none; }		
+		.droopmenu-showbg .droopmenu-brand .dmlogo-light{ display:none; }
+		.droopmenu-showbg .droopmenu-brand .dmlogo-dark{ display:block; }		
+						
+	}		
+		
+	@media screen and (max-width: 767px) {
+		.droopmenu-header{ 
+			background-color:rgba(0, 0, 0, 0.5); 
+			transition:none; 
+		}
+		
+		/* MOBILE MENU LINKS | BACKGROUND | COLORS */ 
+		.droopmenu > li > a,
+		.droopmenu > li > span{ color:#71818C; }
+		.droopmenu li:hover > a{ color: #00D87E; }
+		
+		/* MOBILE MENU LINKS | ACTIVE LINK */ 
+		.droopmenu li.dmtoggle-open > a{ color: #00D87E;  }
+		
+		/* MOBILE MENU LINKS | BOTTOM BORDER COLOR */
+		.droopmenu > li > a,	
+		.droopmenu li ul li a{ }
+		
+		/* MOBILE MENU PANEL | TOP BORDER */
+		.droopmenu-nav{ }				
+		
+		/* MOBILE MENU EXTRA LINKS */		
+		.droopmenu-extra .droopmenu > li > a{ color:#fff; }
+		.droopmenu-extra .droopmenu li:hover > a{ color: #FDD922; }
+		.droopmenu-extra .droopmenu li li:hover > a{  color: #00D87E; }
+		
+		/* MOBILE MENU EXTRA LINKS | BORDER BOTTOM COLOR */	
+		.droopmenu-extra .droopmenu > li > a,	
+		.droopmenu-extra .droopmenu li ul li a{ }
+		
+		/* MOBILE MENU EXTRA LINKS | ACTIVE LINK */
+		.droopmenu-extra .droopmenu li.dmtoggle-open > a{ color: #FDD922; }			
+		
+		/* OFFCANVAS | BACKGROUND */
+		.droopmenu-offcanvas .droopmenu-nav { }	
+		
+		/* OFFCANVAS CLOSE PANEL | BACKGROUND | BORDER BOTTOM COLOR */	
+		.droopmenu-mclose { }
+		
+		/* OFFCANVAS CLOSE ICON COLOR | USE BACKGROUND COLOR */
+		.droopmenu-mclose span:before, 
+		.droopmenu-mclose span:after { }
+		
+		/* GRID CONTAINER | BORDER BOTTOM COLOR */
+		.droopmenu .droopmenu-grid-container{ }
+		.droopmenu > li a.droopmenu-button{ padding:5px 10px; }
+		.droopmenu > li a.droopmenu-button span{ width:100%; color:#fff; }
+		.droopmenu-brand .dmlogo-dark{ display:none; }
+	}				

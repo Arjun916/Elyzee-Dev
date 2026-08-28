@@ -1,0 +1,143 @@
+<div class="modal fade" id="book_packages_modal" tabindex="-1" role="dialog" aria-labelledby="book_packages_heading" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="moda-title">
+					<h5 class="modal-title" id="book_packages_heading">Book Now<small class="d-block"><cms:show clonedpage_tttitle/></small></h5>
+					<div class="bg__primary px-2 small d-block price_container rounded">
+						<span class="text-light"><cms:get 'locale.price'/>:</span>
+						<cms:if has_promotion && has_promotion eq '1'>
+						<span class="original_price text-light"><s><cms:get 'locale.currency'/> <cms:show pp_price/></s></span><span class="sale_price mx-2 text-light feature__price"><strong><cms:get 'locale.currency'/> <cms:show pp_discount_price/></strong></span>
+						<cms:else/>
+						<span class="original_price text-light feature__price"><strong><cms:get 'locale.currency'/> <cms:show pp_price/></strong></span>
+						</cms:if>
+					</div>
+				</div>
+  
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+		
+		  
+				<cms:trim "<cms:embed 'common/flash_block.html'/>"/>
+		  
+				<cms:form name="appointment" masterpage='book-appointment.php' mode='create' enctype='multipart/form-data' role='form' method='post' anchor='0'>
+		<cms:if k_success>				  
+		<cms:db_persist_form
+		_invalidate_cache='0'
+		_auto_title='0'
+		k_page_title="<cms:show frm_contact_name/>"
+		hospital=frm_hospital
+		speciality = frm_speciality
+		/>
+		<cms:if k_success>
+		<cms:set reply_email = "<cms:get_field 'appointment_form_email' masterpage='globals.php' />"/>
+		<cms:set reply_email_to="<cms:concat 'Elyzee Appointments <' reply_email '>' />" />
+		<cms:set subject_email="<cms:concat frm_contact_name ' - Appointment request received -' frm_appointment_date/>" />
+		<cms:set success_message="<strong>Dear <cms:show frm_contact_name/></strong> ,<br/><br/>Thank you for sending your appointment request.<br>We are committed to offering you the best medical care.<br>One of our representatives will contact you shortly to confirm the appointment.<br/><br/>We thank you for your patience.<br><strong>Take care</strong>."/>
+		<cms:set_flash name='success_msg' value='1' />
+		<cms:set_flash name='message_value' value=success_message />
+
+		<cms:pages masterpage=k_template_name page_name=k_last_insert_page_name limit='1' show_future_entries='1'>
+		<cms:capture into='speciality_value' 'global'><cms:related_pages 'speciality'><cms:get "title_<cms:show k_lang/>"/></cms:related_pages></cms:capture>
+		<cms:capture into='hospital_value' 'global'><cms:related_pages 'hospital'><cms:get "title_<cms:show k_lang/>"/></cms:related_pages></cms:capture>
+		</cms:pages>
+
+		<cms:send_mail from=org_noreply_email to=frm_user_email reply_to=reply_email_to subject=subject_email debug=email_debug html='1'><cms:embed 'emails/appointments.html'/></cms:send_mail>
+
+		<cms:set subject_email="<cms:concat '[Appointment] ' frm_contact_name ' - ' frm_appointment_date/>" />
+		<cms:set success_message="<strong>Dear Team</strong> ,<br/><br/>The following appointment request was submitted from <b><cms:show orgname/></b> Website Appointments Form<br/>"/>
+
+		<cms:send_mail from=org_noreply_email to=reply_email_to reply_to=frm_user_email subject=subject_email debug=email_debug html='1'><cms:embed 'emails/appointments.html'/></cms:send_mail>					
+		<cms:redirect url="<cms:link k_template_name/>"/>
+		</cms:if>			
+		</cms:if>
+
+		<cms:trim "<cms:embed 'common/form_error_block.html'/>"/>
+
+		<div class="row">
+		<cms:set g_content_temp = "content_<cms:show k_lang/>" />
+		<cms:set g_content_val = "<cms:get_global g_content_temp/>" />
+		<cms:if g_content_val>
+		<div class="col-sm-12"><div class="contact-panel__desc mb-30"><cms:do_shortcodes><cms:show g_content_val/></cms:do_shortcodes></div></div>
+		</cms:if>
+
+
+
+		<!-- Full Name -->
+		<div class="col-sm-6 col-md-6 col-lg-12">
+		<div class="form-group">
+		<i class="icon-news form-group-icon"></i>						
+		<cms:input type="text" class="form-control" id="contact_name" name="contact_name" label="<cms:get 'locale.full_name'/>" title="<cms:get 'locale.full_name'/>" placeholder="<cms:get 'locale.full_name'/> *" required='1' />
+		<cms:if k_error_contact_name><small class="text-danger mx-2">* <cms:get "locale.required"/>: <cms:get "locale.field_cannot_left_empty"/></small></cms:if>
+		</div>
+		</div>
+
+		<!-- Email -->
+		<div class="col-sm-6 col-md-6 col-lg-12">
+		<div class="form-group">
+		<i class="icon-email form-group-icon"></i>
+		<cms:input type="bound" class="form-control" id="user_email" required='1' validator='email' name="user_email" label="<cms:get 'locale.email'/>" title="<cms:get 'locale.email'/>" placeholder="<cms:get 'locale.email'/> *"/>
+		<cms:if k_error_user_email><small class="text-danger mx-2">* <cms:get "locale.required"/>: <cms:get "locale.enter_valid_email"/></small></cms:if>
+		</div>
+		</div>
+
+		<!-- phone -->
+		<div class="col-sm-6 col-lg-12">
+		<div class="form-group">
+		<i class="icon-phone form-group-icon"></i>
+		<cms:input placeholder="<cms:get 'locale.phone'/> *" type="bound" class="form-control" id="user_phone" name="user_phone" label="<cms:get 'locale.phone'/>" title="<cms:get 'locale.phone'/>"/>
+		<cms:if k_error_user_phone><small class="text-danger mx-2">* <cms:get "locale.required"/>: <cms:get "locale.enter_valid_phone"/></small></cms:if>
+		</div>
+		</div>
+
+		<!-- Appointment Date -->
+		<div class="col-sm-6 col-lg-12">
+		<div class="form-group form-group-date">
+		<i class="icon-calendar form-group-icon"></i>
+		<cms:input type="bound" name="appointment_date" class="form-control datetime_input" label="<cms:get 'locale.date_time'/>" title="<cms:get 'locale.date_time'/>" placeholder="<cms:get 'locale.date_time'/> *" autocomplete="off"/>
+		<cms:if k_error_appointment_date><small class="text-danger mx-2">* <cms:get "locale.required"/></small></cms:if>
+		</div>
+		</div>
+
+		<!-- notes_to_doctors_office -->
+		<div class="col-12">
+		<div class="form-group">
+		<i class="icon-alert form-group-icon"></i>
+		<cms:input name='user_message' type='bound' class="form-control" placeholder="<cms:get 'locale.notes_to_doctors_office'/>" label="<cms:get 'locale.notes_to_doctors_office'/>" title="<cms:get 'locale.notes_to_doctors_office'/>"/>
+		</div>
+		</div>
+
+		<!-- Captcha -->
+		<div class="col-12">
+		<div class="form-group">
+		<cms:input type='recaptcha' label="Captcha" class="form-control w-100 <cms:if k_error_elyzee_captcha>is-invalid</cms:if>" title="Captcha" name='elyzee_captcha' hl="<cms:show k_lang/>"/>
+		<cms:if k_error_elyzee_captcha><small class="text-danger mx-2">* <cms:get "locale.required"/>: <cms:show k_error_elyzee_captcha/></small></cms:if>
+		</div>
+		</div>
+
+		<!-- declaration -->
+		<div class="col-12">
+		<strong class="color-primary"><cms:get "locale.declaration"/></strong>
+		<ul><li><cms:get "locale.appointment_declaration_statement"/></li></ul>
+		</div>
+
+	
+		
+		<div class="contact-result"></div>
+		
+
+		</div>			
+		</cms:form>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><cms:get "locale.close"/></button>
+        <button type="submit" class="btn btn__primary"><i class="icon-arrow-right"></i> <cms:get "locale.book_appointment"/></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

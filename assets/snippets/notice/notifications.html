@@ -1,0 +1,67 @@
+<cms:if notifications eq '0'>
+<cms:set div_modals='[]' is_json='1' 'global'/>
+<cms:capture into='notice_menu_output'>
+<cms:pages masterpage='notice.php' extended_info='1' include_custom_fields='1' custom_field="end_date>=<cms:date format='Y-m-d H:i:s' />">
+<cms:set end_val ="<cms:date end_date format='Y-m-d H:i:s'/>" />
+<cms:set curr_val ="<cms:date format='Y-m-d H:i:s' />" />
+<cms:if end_val ge curr_val>
+<cms:if is_redirection && is_redirection eq 'Yes'>
+<cms:set noticeurl_temp = "url_<cms:show k_lang/>" />
+<cms:set noticeurl_val="<cms:get noticeurl_temp />" 'global' />
+<cms:if is_blank && is_blank eq 'Yes'>	<cms:set noticetarget_val='Yes' 'global'/></cms:if>
+<cms:else/>
+<cms:set noti_desc_temp = "content_<cms:show k_lang/>" />
+<cms:set noti_desc="<cms:get noti_desc_temp />" />
+<cms:if noti_desc><cms:set noticeurl_val="<cms:show_with_lc k_page_link/>" 'global' /></cms:if>
+</cms:if>
+<cms:set noti_short_desc_temp = "short_desc_<cms:show k_lang/>" />
+<cms:set noti_short_desc="<cms:get noti_short_desc_temp />" 'global' />			
+
+<li>
+<a href="#notification_modal" data-bs-toggle="modal" data-bs-target="#notification_modal" data-bs-title='<cms:get "title_<cms:show k_lang/>"/>' data-desc="<cms:if noti_short_desc><cms:show noti_short_desc /></cms:if>" data-url="<cms:if noticeurl_val><cms:show noticeurl_val /></cms:if>" data-blank="<cms:if noticetarget_val && noticetarget_val eq 'Yes'>_blank<cms:else />_self</cms:if>" data-img="<cms:if page_image><cms:show page_image /></cms:if>" title='<cms:get "title_<cms:show k_lang/>"/>'>
+<b><cms:get "title_<cms:show k_lang/>"/></b>
+<cms:if noti_short_desc>: <cms:show noti_short_desc /></cms:if>
+</a>
+</li>
+
+<cms:set noticeurl_val="" 'global' />
+<cms:set noticetarget_val="" 'global'/>
+<cms:set noti_cont="" 'global' />
+
+<cms:set has_notice_children='1' 'global' />
+</cms:if>
+</cms:pages>
+</cms:capture>
+
+<cms:if has_notice_children>
+<section class="section-full p-0 bg-white">
+<div class="container-fluid p-0">
+<div class="breaking-news-ticker" id="notiTicker">
+<div class="bn-label"><i class="fas fa-bullhorn"></i></div>
+<div class="bn-news">
+<ul>
+<cms:show notice_menu_output />
+</ul>
+</div>
+<div class="bn-controls">
+<button><span class="bn-arrow bn-prev"></span></button>
+<button><span class="bn-action"></span></button>
+<button><span class="bn-arrow bn-next"></span></button>
+</div>
+</div>
+</div>
+</section>
+
+
+<div class="modal model-popup fade" id="notification_modal" tabindex="-1" role="dialog" aria-labelledby="notification_modalLabel" aria-hidden="true" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content position-relative">					  
+<div class="modal-body text-center"></div>
+<button type="button" class="position-absolute top-0 end-0 btn text-dark" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark"></i></button>		
+</div>
+</div>
+</div>
+
+</cms:if>
+</cms:if>
+<cms:set notifications='1' 'global' />

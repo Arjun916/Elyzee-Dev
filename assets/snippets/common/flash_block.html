@@ -1,0 +1,11 @@
+<cms:set success_msg = "<cms:get_flash 'success_msg' />" />
+<cms:set message_value = "<cms:get_flash 'message_value' />" />
+<cms:if success_msg && message_value>
+<div class="col-12 close_alert">
+<div class="mt-40 mb-2 w-100 position-relative d-flex justify-content-start align-items-top alert alert-<cms:if success_msg eq '1'>success<cms:else/>danger</cms:if> alert-dismissible" role="alert">
+<a href="<cms:show_with_lc k_page_link/>" class="position-absolute btn top-0 end-0 close"><span aria-hidden="true">&times;</span></a>
+<p class="m-0"><i class="fas fa-<cms:if success_msg eq '1'>check-circle<cms:else/>exclamation-circle</cms:if> "></i></p>
+<div class="px-2"><cms:show message_value/></div>
+</div>
+</div>
+</cms:if>

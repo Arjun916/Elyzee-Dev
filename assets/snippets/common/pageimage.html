@@ -1,0 +1,74 @@
+<cms:capture into='img_output' 'global'>
+<cms:set has_sliderimages='0' 'global' />
+
+<cms:if has_sliderimages eq '0' && page_image>
+<cms:show page_image />
+<cms:set has_sliderimages='1' 'global' />
+</cms:if>
+
+<cms:if (has_sliderimages eq '0') && k_is_page && (k_template_name eq 'doctors.php') && photo_pic>
+<cms:show photo_pic />
+<cms:set has_sliderimages='1' 'global' />
+</cms:if>
+
+
+<cms:if has_sliderimages eq '0'>
+<cms:set img_val_temp = "image_<cms:show k_lang/>"/>
+<cms:set img_val_actual = "<cms:get img_val_temp />"/>
+<cms:if img_val_actual><cms:show img_val_actual/><cms:set has_sliderimages='1' 'global' /></cms:if>
+</cms:if>
+
+<cms:if has_sliderimages eq '0'>
+<cms:show_repeatable 'top_slider' >
+<cms:if "<cms:not_empty slider_image />" && has_sliderimages eq '0'>
+<cms:show slider_image />
+<cms:set has_sliderimages='1' 'global' />
+</cms:if>
+</cms:show_repeatable>
+</cms:if>
+
+
+<cms:if has_sliderimages eq '0' && k_template_name eq 'gallery.php'>
+<cms:if k_template_name eq 'gallery.php'>
+<cms:reverse_related_pages 'gallery_photo' masterpage='photo_gallery.php' orderby='weight' order='asc'>
+<cms:if "<cms:not_empty gg_image />" && has_sliderimages eq '0'>
+<cms:set has_sliderimages='1' 'global' />
+<cms:show gg_image />
+</cms:if>
+</cms:reverse_related_pages>
+</cms:if>
+
+
+<cms:if has_sliderimages eq '0' && gallery>
+
+<cms:related_pages 'gallery' masterpage='gallery.php'> 
+<cms:if has_sliderimages eq '0'>
+<cms:show_repeatable 'top_slider' >
+<cms:if "<cms:not_empty slider_image />" && has_sliderimages eq '0'>
+<cms:show slider_image />
+<cms:set has_sliderimages='1' 'global' />
+</cms:if>
+</cms:show_repeatable>
+
+
+<cms:if has_sliderimages eq '0'>
+<cms:reverse_related_pages 'gallery_photo' masterpage='photo_gallery.php' orderby='weight' order='asc'>
+<cms:if "<cms:not_empty gg_image />" && has_sliderimages eq '0'>
+<cms:set has_sliderimages='1' 'global' />
+<cms:show gg_image />
+</cms:if>
+</cms:reverse_related_pages>
+</cms:if>
+</cms:if>
+</cms:related_pages>
+
+</cms:if>
+</cms:if>
+
+
+
+
+<cms:if has_sliderimages eq '0'>
+<cms:show p_img />
+</cms:if>
+</cms:capture>

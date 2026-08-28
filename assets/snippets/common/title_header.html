@@ -1,0 +1,15 @@
+<cms:set page_title_val = "<cms:if k_is_page && k_page_name><cms:call 'get_page_title' tname=k_template_name pname=k_page_name/><cms:else/><cms:call 'get_page_title' tname=k_template_name/></cms:if>" />
+
+<section class="page-title page-title-layout1 bg-overlay pt-120 pb-70">
+<div class="bg-img"><img src="<cms:show k_site_link/>assets/images/page-titles/<cms:php>echo rand(1,3);</cms:php>.jpg" alt="<cms:show page_title_val/>"></div>
+<div class="container">
+<div class="row">
+<div class="col-12">
+<cms:set page_title_val = "<cms:if k_is_page && k_page_name><cms:call 'get_page_title' tname=k_template_name pname=k_page_name/><cms:else/><cms:call 'get_page_title' tname=k_template_name/></cms:if>" />
+<div class="pagetitle__heading m-0 h1 d-block" data-aos="zoom-in"><cms:if title_header_icon_val><cms:show title_header_icon_val/> </cms:if><cms:show page_title_val/></div>
+<cms:if show_breadcrumbs><cms:trim "<cms:embed 'common/breadcrumbs.html'/>"/></cms:if>
+
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,153 @@
+
+	/*TOP BAR COLOR*/
+	.droopmenu-navbar{
+		background: #89fffd;
+		background: -webkit-linear-gradient(to right, #89fffd, #ef32d9);
+		background: -moz-linear-gradient(to right, #89fffd, #ef32d9);
+		background: linear-gradient(to right, #89fffd, #ef32d9);
+	}
+	
+	/* TOP LEVEL LINK COLORS | HOVER COLOR */
+	.droopmenu > li > a,
+	.droopmenu > li > span{ color: rgba(255,255,255,0.8); }
+	.droopmenu li:hover > a{ color: #fff; }
+	
+	/* TOP LEVEL MENU ROUNDED BUTTON */
+	.droopmenu > li a.droopmenu-button span{  }	
+	.droopmenu li:hover > a.droopmenu-button{  background: none; color:#fff; }
+	.droopmenu li > a.droopmenu-button span{  border-color: hsla(0, 0%, 100%, 0.6);  }
+	.droopmenu li:hover > a.droopmenu-button span{ border-color:#fff; }
+	
+	/* DROPDOWN | BACKGROUND OR BORDERS  */ 
+	.droopmenu li > ul{ }
+	
+	/* SECOND LEVEL LINKS | COLOR OR BACKGROUND */ 
+	.droopmenu li li:hover > a{ }
+	.droopmenu li ul li a{ }
+	
+	/* MOBILE TAB CONTENT BACKGROUND AND BOTTOM BORDER */
+	.droopmenu .droopmenu-tabcontent { }
+	
+	/* MOBILE TAB HEADER COLOR AND BOTTOM BORDER */
+	.droopmenu .droopmenu-tabheader { }
+	
+	/* MOBILE ACTIVE TAB HEADER | BACKGROUND AND COLORS */
+	.droopmenu .droopmenu-tabheader.droopmenu-tab-active{ }
+	
+	/* MOBILE MENU TOGGLE | HAMBURG COLOR  */
+	.droopmenu-toggle i:after,
+	.droopmenu-toggle i:before{ background: #fff; }
+	
+	/* MEGA MENU HEADERS + CONTENT PARAGRAPHS | COLOR */
+	.droopmenu-col h4,
+	.droopmenu .dm-block-title,
+	.droopmenu .droopmenu-content p{ }
+	
+	/* CONTENT LINKS + ICONS | COLOR */
+	.droopmenu .droopmenu-content p a,
+	.droopmenu .droopmenu-content .dm-small,
+	.droopmenu .droopmenu-icon-links li .dm-details span{ }
+	
+	 /* CONTENT ICON LINKS | COLORS | BACKGROUND COLOR */
+	.droopmenu-col .coldemo,
+	.droopmenu .droopmenu-icon-links li .dm-icon-holder,
+	.demo-row-eq .dm-equalize .droopmenu-col4 .droopmenu-content{ }
+	.droopmenu .droopmenu-icon-links li a:hover ~ .dm-details span{ }
+	.droopmenu .droopmenu-icon-links li a:hover ~ .dm-icon-holder{ }
+	
+	/* CONTENT BORDERS  */
+	.droopmenu .dm-border-right{ }
+	.droopmenu .dm-border-bottom,
+	.droopmenu .dm-bottom-separator{ }	
+	
+	/* DECORATIVE ARROWS + SUBMENU BORDERS  */
+	.dmpos-bottom .droopmenu li > ul{ }
+	.droopmenu li.dmopener .dm-arrow{  border-bottom-color:#fff; }
+	.dmarrow-down .droopmenu li.dmopener .dm-arrow{ border-top-color:#033772; }	 	
+	.dmpos-bottom .droopmenu li.dmopener .dm-arrow{ border-top-color:#fff; }
+	.dmpos-bottom.dmarrow-down .droopmenu li.dmopener .dm-arrow{ border-bottom-color:#033772; }
+	
+	/* TOP HEADER SOCIAL ICONS  */
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a{border-color: hsla(0, 0%, 100%, 0.65);}
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a i{ color: hsla(0, 0%, 100%, 0.65); }
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a:hover i{ color:#fff;  }	
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a:hover {  border-color:#fff;  }
+	
+					
+	@media only screen and (min-width: 768px) {
+		/* TAB BACKGROUND COLOR */
+		.droopmenu .droopmenu-tabnav { }
+		
+		/* TAB LINKS COLOR */
+		.droopmenu .droopmenu-tabnav a { }
+		
+		/* ACTIVE TAB LINKS COLOR */
+		.droopmenu .droopmenu-tabnav a.droopmenu-tab-active { }
+		
+		/* TAB LINKS ARROW BACKGROUND COLOR  + BORDERS BOTTOM & RIGHT COLORS */
+		.droopmenu .droopmenu-tabnav a:after { }
+		
+		/* VERTICAL TABS BACKGROUND */
+		.droopmenu .droopmenu-tabs.droopmenu-tabs-vertical .droopmenu-tabnav{ }
+		
+		/* VERTICAL TABS BORDER LEFT */
+		.droopmenu .droopmenu-tabs.droopmenu-tabs-vertical .droopmenu-tabpanel{ }
+		
+		/* TABS PANEL TOP BORDER */
+		.droopmenu .droopmenu-tabpanel  { }						
+						
+	}		
+		
+	@media screen and (max-width: 767px) {
+	
+		/* MOBILE NAVBAR | HEADER */
+		.droopmenu-navbar{ background:#fff; }
+		.droopmenu-header{ 
+			background: #89fffd;
+			background: -webkit-linear-gradient(to right, #89fffd, #ef32d9);
+			background: -moz-linear-gradient(to right, #89fffd, #ef32d9);
+			background: linear-gradient(to right, #89fffd, #ef32d9);
+		}
+		
+		/* MOBILE MENU LINKS | BACKGROUND | COLORS */ 
+		.droopmenu > li > a,
+		.droopmenu > li > span{ color:#71818C; }
+		.droopmenu li:hover > a{ color: #CCCCCC; }
+		
+		/* MOBILE MENU LINKS | ACTIVE LINK */ 
+		.droopmenu li.dmtoggle-open > a{ color: #CCCCCC;  }
+		
+		/* MOBILE MENU LINKS | BOTTOM BORDER COLOR */
+		.droopmenu > li > a,	
+		.droopmenu li ul li a{ }
+		
+		/* MOBILE MENU PANEL | TOP BORDER */
+		.droopmenu-nav{ }			
+		
+		/* MOBILE MENU EXTRA LINKS */		
+		.droopmenu-extra .droopmenu > li > a{ color:#fff; }
+		.droopmenu-extra .droopmenu li:hover > a{ color: #fff; }
+		.droopmenu-extra .droopmenu li li:hover > a{  color: #CCCCCC; }
+		
+		/* MOBILE MENU EXTRA LINKS | BORDER BOTTOM COLOR */	
+		.droopmenu-extra .droopmenu > li > a,	
+		.droopmenu-extra .droopmenu li ul li a{ }
+		
+		/* MOBILE MENU EXTRA LINKS | ACTIVE LINK */
+		.droopmenu-extra .droopmenu li.dmtoggle-open > a{ color: #fff; }			
+		
+		/* OFFCANVAS | BACKGROUND */
+		.droopmenu-offcanvas .droopmenu-nav { }	
+		
+		/* OFFCANVAS CLOSE PANEL | BACKGROUND | BORDER BOTTOM COLOR */	
+		.droopmenu-mclose { }
+		
+		/* OFFCANVAS CLOSE ICON COLOR | USE BACKGROUND COLOR */
+		.droopmenu-mclose span:before, 
+		.droopmenu-mclose span:after { }
+		
+		/* EXTRA LINKS + GRID CONTAINER | BORDER BOTTOM COLOR */
+		.droopmenu .droopmenu-grid-container,
+		.droopmenu-extra .droopmenu > li > a,	
+		.droopmenu-extra .droopmenu li ul li a{ }		
+	}		

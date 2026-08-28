@@ -1,0 +1,63 @@
+<cms:set clonedpage_tttitle="<cms:call 'get_page_title' tname=k_template_name pname=k_page_name/>"/>
+
+
+<cms:if k_page_foldertitle && k_page_foldertitle ne ''>
+<cms:set curr_category_title_temp ="title_<cms:show k_lang/>" />
+<cms:pages masterpage='multi_lang_folder.php' page_title=k_page_foldertitle limit='1'>
+<cms:set curr_category_title = "<cms:get curr_category_title_temp/>" 'global'/>
+<cms:if category_bgcolor && category_bgcolor ne ''>
+<cms:set curr_category_bgcolor = "style='background-color:<cms:show category_bgcolor/> !important;'" 'global'/>
+</cms:if>
+</cms:pages>
+</cms:if>
+
+<!-- page-title -->
+<section class="page-title pt-30 pb-30 text-center">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-12">
+				<cms:trim "<cms:embed 'common/breadcrumbs.html'/>"/>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Details -->
+<section class="blog blog-single pt-0 pb-80">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-8">
+				<div class="post-item mb-0 h-auto">
+					<div class="post__img">
+						<img src="<cms:show img_output/>" alt="<cms:show clonedpage_tttitle/>" loading="lazy">
+					</div>
+					<div class="post__body pt-30 pb-0" id="package_details">
+						<cms:if k_page_foldername>
+						<div class="post__meta d-flex">
+							<cms:if curr_category_title && curr_category_title ne ''>
+								<span class="badge rounded bg-info text-light" <cms:show curr_category_bgcolor/>><cms:show curr_category_title/></span>
+							</cms:if>
+						</div>
+						</cms:if>
+						
+						<div class="post__header m-0 d-block">
+							<div class="h3 m-0"><cms:show clonedpage_tttitle/></div>
+							<cms:set sub_title_temp = "sub_title_<cms:show k_lang/>"/>
+							<cms:set sub_title_val = "<cms:get sub_title_temp/>"/>
+							<cms:if sub_title_val><div class="d-block mt-1 font-weight-bold color-secondary"><cms:show sub_title_val/></div></cms:if>
+						</div>	
+
+						<div class="post__desc list-items p-0 border color-secondary mt-3" <cms:show curr_category_bgcolor/>>
+							<div class="d-block p-3 bg-white-opacity75">
+							<cms:do_shortcodes><cms:get "content_<cms:show k_lang />" /></cms:do_shortcodes>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<cms:trim "<cms:embed 'packages/payment_sidebar.html'/>"/>
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section>
+<cms:trim "<cms:embed 'common/prevnext.html' />"/>

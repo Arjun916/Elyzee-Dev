@@ -1,0 +1,40 @@
+<cms:if "<cms:get_session 'onetimepopups'/>">
+<cms:else/>
+<cms:capture into="onetimepopups">
+<cms:pages masterpage='notice.php' extended_info='1' include_custom_fields='1' custom_field="end_date>=<cms:date format='Y-m-d H:i:s' />" limit='1'>
+<cms:set noticeurl_temp = "url_<cms:show k_lang/>" />
+<cms:set noticeurl_val="<cms:get noticeurl_temp />"/>
+<cms:if is_blank && is_blank eq 'Yes'>	<cms:set noticetarget_val='Yes' 'global'/></cms:if>
+
+<cms:set noti_title_temp = "title_<cms:show k_lang/>" />
+<cms:set noti_title_val="<cms:get noti_title_temp />" />
+
+<div class="modal-header modal-header pb-0">
+<h6 class="modal-title"><cms:show noti_title_val/></h6>
+<button type="button" class="close close btn__link" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark fa-xs"></i></button>
+</div>
+
+<div class="modal-body text-center">
+<a href="<cms:show noticeurl_val />" target="<cms:if noticetarget_val && noticetarget_val eq 'Yes'>_blank<cms:else />_self</cms:if>" title="<cms:show noti_title_val/>">
+<cms:set noticeimg_temp = "image_<cms:show k_lang/>" />
+<cms:set noticeimg_val="<cms:get noticeimg_temp />"/>
+<img src="<cms:show px_image/>" data-src="<cms:show noticeimg_val />" class="mw-100 rounded lazy" title="<cms:show noti_title_val/>">
+<div class="d-flex justify-content-end mt-2 btn btn__secondary btn__link btn__rounded">
+<span><cms:get 'locale.read_more'/></span>
+<i class="icon-arrow-right"></i>
+</div>
+</a>
+</div>			
+<cms:set has_onetimepopups = "1" 'global'/>
+<cms:set_session name='onetimepopups' value='1' />
+</cms:pages>
+</cms:capture>
+
+<cms:if has_onetimepopups>
+<div class="modal model-popup fade" id="onetimepopup_modal" tabindex="-1" role="dialog" aria-labelledby="notification_modalLabel" aria-hidden="true" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content position-relative"><cms:show onetimepopups/></div>
+</div>
+</div>
+</cms:if>
+</cms:if>

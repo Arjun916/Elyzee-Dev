@@ -1,0 +1,30 @@
+<cms:capture into='paginationtop_output' 'global'>
+<cms:if k_paginator_required >
+    <cms:set haspaginationtop_output = '1' 'global' />
+    
+    <div class="col-lg-12 mb-3 text-accent-color text-end">
+       
+        <cms:if k_paginate_link_prev >
+            <a href="<cms:show_with_lc k_paginate_link_prev />" class="btn btn-sm btn-accent me-2 px-2 pb-2 pt-1 rounded" title="«">«</a>
+        </cms:if>
+
+        
+        <small>
+            &#x200E;
+            <span>
+                <cms:if k_lang eq 'ar'>&rlm;عرض<cms:else/>Showing</cms:if>
+                <cms:show k_record_from /> – <cms:show k_record_to />
+                <cms:if k_lang eq 'ar'>&rlm;من<cms:else/>of</cms:if>
+                <cms:show k_total_records />
+            </span>
+            &#x200E;
+        </small>
+
+        
+        <cms:if k_paginate_link_next >
+            <a href="<cms:show_with_lc k_paginate_link_next />" class="btn btn-sm btn-accent ms-2 px-2 pb-2 pt-1 rounded" title="»">»</a>
+        </cms:if>
+
+    </div>
+</cms:if>
+</cms:capture>

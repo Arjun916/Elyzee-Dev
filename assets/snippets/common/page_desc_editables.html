@@ -1,0 +1,85 @@
+<cms:editable type='group' label='Description Introduction' desc='Usually the first paragraph' name='content_group' desc='The main content' order='50' collapsed='0' not_active=NoRedirection>
+<cms:editable name='content_row' type='row' order='10' not_active=NoRedirection>
+<cms:editable type='richtext' name="content_en" label="Description Introduction - English"  order='10' required='1' toolbar='custom' custom_toolbar='paste, pastetext, pastefromword, undo, redo, removeformat, cut, copy, bold, italic, underline, strike, subscript, superscript, format, link, unlink, table, justifyleft, justifycenter, justifyright, justifyblock, blockquote, numberedlist, bulletedlist, outdent, indent, source' css="<cms:show k_site_link />assets/css/editor.css" body_class="en" class='col-md-6' not_active=NoRedirection/>
+<cms:editable type='richtext' name="content_ar" label="Description Introduction - Arabic"  order='20' required='1' toolbar='custom' custom_toolbar='paste, pastetext, pastefromword, undo, redo, removeformat, cut, copy, bold, italic, underline, strike, subscript, superscript, format, link, unlink, table, justifyleft, justifycenter, justifyright, justifyblock, blockquote, numberedlist, bulletedlist, outdent, indent, source' css="<cms:show k_site_link />assets/css/editor.css" body_class="ar" class='col-md-6' not_active=NoRedirection/>
+</cms:editable>
+</cms:editable>
+
+<cms:mosaic name='desc_contents' label='Additional Description Blocks' desc='with images and videos' order='60' not_active=NoRedirection>
+	<cms:tile name='desc_sections' label='Add Description Block'>	
+		<cms:editable name='desc_heading_row' type='row' order='10'>
+			<cms:editable type='text' name="desc_heading_en" label='Block Heading in English' maxlength='100' order='10' class='col-md-6'/>
+			<cms:editable type='text' name="desc_heading_ar" label='Block Heading in Arabic'  maxlength='100' order='20' class='col-md-6'/>
+		</cms:editable>
+		<cms:editable name='desc_content_row' type='row' order='20'>
+			<cms:editable type='richtext' name="desc_content_en" label='Block Content in English' order='30' toolbar='custom' custom_toolbar='paste, pastetext, pastefromword, undo, redo, removeformat, cut, copy, bold, italic, underline, strike, subscript, superscript, format, link, unlink, table, justifyleft, justifycenter, justifyright, justifyblock, blockquote, numberedlist, bulletedlist, outdent, indent, source' css="<cms:show k_site_link />assets/css/editor.css" body_class="en" required='1' class='col-md-6'/>
+			<cms:editable type='richtext' name="desc_content_ar" label='Block Content in Arabic' order='40' toolbar='custom' custom_toolbar='paste, pastetext, pastefromword, undo, redo, removeformat, cut, copy, bold, italic, underline, strike, subscript, superscript, format, link, unlink, table, justifyleft, justifycenter, justifyright, justifyblock, blockquote, numberedlist, bulletedlist, outdent, indent, source' css="<cms:show k_site_link />assets/css/editor.css" body_class="ar" required='1' class='col-md-6'/>
+		</cms:editable>
+		<cms:editable name='desc_media_row' type='row' order='30'>
+		
+			
+			<cms:editable type='radio' name='desc_media_type' label='Choose the Media Type' opt_values='YouTube Video Link or Plain Image=youtube_link | Instagram or Any other Video Embed code=embed_video' opt_selected='youtube_link' searchable='0' order='1' class='col-md-12'/>
+
+			<cms:func _into='DescMediaTypeYouTubeLink' desc_media_type=''><cms:if desc_media_type='youtube_link'>show<cms:else />hide</cms:if></cms:func>
+			
+			<cms:func _into='DescMediaTypeVideoEmbed' desc_media_type=''><cms:if desc_media_type='embed_video'>show<cms:else />hide</cms:if></cms:func>
+			
+			
+			<cms:editable name='desc_image' label='Image related to the block' desc='Optional' height='1080' quality='100' show_preview='1' preview_height='50' type='image' crop='1' order='50' class='col-md-6' not_active=DescMediaTypeYouTubeLink/>	
+			<cms:editable name='desc_video' no_xss_check ='1' label='Youtube URL of the related Video' desc='Optional, Youtube Video URL format should be: https://www.youtube.com/watch?v=xXXxXxxxXxX' type='text' validator='url' order="60" class='col-md-6' not_active=DescMediaTypeYouTubeLink/>
+			
+			<cms:editable name='desc_media_embed' label='Paste the Video Embed Code here' desc='Optional' height='75' order='70' type='textarea' no_xss_check ='1' class='col-md-12' not_active=DescMediaTypeVideoEmbed/>
+		</cms:editable>
+	
+		<cms:config_list_view>
+			<cms:field 'k_content' >
+				<div class="mosaic-list">
+					<div class="panel-heading"><h3>Description Block <cms:add k_count '1'/></h3></div>
+					<div class="panel-body bg-white">
+						<cms:if desc_image><a class="img-popup" href="<cms:show desc_image />"><img src="<cms:show desc_image />" width="150"></a></cms:if>
+						<cms:if desc_video><a class="label label-secondary" href="<cms:show desc_video />" target='_blank'>Video</a></cms:if>
+						<h4> <cms:show desc_heading_en/></h4>
+						<cms:show desc_content_en/>
+						<hr>
+						<h4> <cms:show desc_heading_ar/></h4>
+						<cms:show desc_content_ar/>
+
+					</div>
+				</div> 
+			</cms:field>
+		</cms:config_list_view>
+	</cms:tile>
+</cms:mosaic>
+	
+
+
+<cms:editable type='group' label='Add Collapsible Sections' desc='Optional, Similar to FAQ sections' name='faq_group' order='70' not_active=NoRedirection>
+	<cms:editable name='faq_title_row' type='row' order='10' not_active=NoRedirection>
+		<cms:editable type='text' name="faq_title_en" label='Collapsible Section Title in English' order='1' required='1' class='col-md-6' not_active=NoRedirection>FAQs</cms:editable>
+		<cms:editable type='text' name="faq_title_ar" label='Collapsible Section Title in Arabic' order='2' required='1' class='col-md-6' not_active=NoRedirection>الأسئلة الشائعة</cms:editable>
+	</cms:editable>
+	
+
+<cms:editable name='faq_sections_row' type='row' order='20' not_active=NoRedirection>
+<cms:repeatable name='faq_sections' label="Add Collapsible Heading and Content" desc='All fields in a stack are mandatory' group="faq_group" stacked_layout='1' order='10' class='col-md-12' not_active=NoRedirection>
+
+<cms:editable type='text' name="faq_heading_en" label='Collapsible Section Heading in English' maxlength='100' order='1' />
+<cms:editable type='text' name="faq_heading_ar" label='Collapsible Section Heading in Arabic'  maxlength='100' order='2' />
+<cms:editable type='textarea' name="faq_content_en" label='Collapsible Section Content in English' order='3'/>
+<cms:editable type='textarea' name="faq_content_ar" label='Collapsible Section Content in Arabic' order='4'/>
+
+</cms:repeatable>
+
+</cms:editable>
+</cms:editable>
+	
+	<cms:editable type='group' label='Additional Content for the page' desc='If not empty, Will show after the main content and collapsible sections' name='footnote_group' order='80' not_active=NoRedirection>	
+	<cms:editable name='footnote_row' type='row' order='10' not_active=NoRedirection>
+		<cms:editable type='richtext' name="footnote_en" label='English' order='10' toolbar='custom' custom_toolbar='paste, pastetext, pastefromword, undo, redo, removeformat, cut, copy, bold, italic, underline, strike, subscript, superscript, format, link, unlink, table, justifyleft, justifycenter, justifyright, justifyblock, blockquote, numberedlist, bulletedlist, outdent, indent, source' css="<cms:show k_site_link />assets/css/editor.css"  body_class="en" class='col-md-6' height='150' not_active=NoRedirection/>
+		<cms:editable type='richtext' name="footnote_ar" label='Arabic' order='20' toolbar='custom' custom_toolbar='paste, pastetext, pastefromword, undo, redo, removeformat, cut, copy, bold, italic, underline, strike, subscript, superscript, format, link, unlink, table, justifyleft, justifycenter, justifyright, justifyblock, blockquote, numberedlist, bulletedlist, outdent, indent, source' css="<cms:show k_site_link />assets/css/editor.css"  body_class="ar" class='col-md-6' height='150' not_active=NoRedirection/>
+	</cms:editable>
+</cms:editable>
+
+
+
+<cms:editable type='group' label='Publish Status' name='p_publish_group' order='1000' collapsed='0'/>

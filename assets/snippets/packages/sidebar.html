@@ -1,0 +1,101 @@
+<div class="col-sm-12 col-md-12 col-lg-4">
+<aside class="row sidebar">
+
+
+
+<!-- Latest -->
+<cms:capture into='latest_output'>  
+<cms:pages masterpage=k_template_name limit='3' id="NOT <cms:show k_page_id/>">
+<cms:set latest_title_tttitle="<cms:call 'get_page_title' tname=k_template_name pname=k_page_name/>"/>
+
+
+<cms:if (is_promotion eq 'Yes') && (pp_price gt pp_discount_price)>
+<cms:set latest_end_val ="<cms:date end_date format='Y-m-d'/> 23:59:59" />
+<cms:set latest_curr_val ="<cms:date format='Y-m-d H:i:s' />" />
+<cms:if latest_end_val ge latest_curr_val>
+	<cms:set latest_has_promotion='1' 'global'/>
+</cms:if>
+</cms:if>
+
+
+<div class="widget-post-item d-flex align-items-center">
+<div class="widget-post__img">
+<a href="<cms:show_with_lc k_page_link />" title="<cms:show latest_title_tttitle/>"><img src="<cms:thumbnail page_image width='100' height='100'/>" alt="<cms:show latest_title_tttitle/>"></a>
+</div>
+<div class="widget-post__content">
+<h4 class="widget-post__title"><a href="<cms:show_with_lc k_page_link />" title="<cms:show latest_title_tttitle/>"><cms:show latest_title_tttitle/></a></h4>
+<div class="price_container">
+
+<cms:if latest_has_promotion && latest_has_promotion eq '1'>
+<div class="d-flex justify-content-between align-items-center pt-1">
+<span class="badge rounded-pill bg-warning text-dark m-0"><cms:get "promotion_title_<cms:show k_lang/>"/></span>
+<hr class="flex-fill bg-warning m-0">
+</div>
+<small class="text-dark"><cms:get 'locale.price'/>:</small>
+<span class="original_price small text-dark"><s><cms:get 'locale.currency'/> <cms:show pp_price/></s></span><span class="sale_price small mx-2 text-dark"><strong><cms:get 'locale.currency'/> <cms:show pp_discount_price/></strong></span>
+<cms:else/>
+<small class="text-dark"><cms:get 'locale.price'/>:</small>
+<span class="original_price small text-dark"><strong><cms:get 'locale.currency'/> <cms:show pp_price/></strong></span>
+</cms:if>
+</div>
+		
+</div>
+</div>
+<cms:set latest_has_promotion='0' 'global'/>
+
+<cms:set haslatest_output='1' 'global' />
+</cms:pages>
+</cms:capture>
+
+<cms:if haslatest_output>	
+<div class="col-sm-6 col-md-6 col-lg-12 my-3">			
+<div class="widget widget-posts px-4">
+<h5 class="widget__title"><cms:get 'locale.latest'/></h5>
+<div class="widget__content"><cms:show latest_output /></div>
+</div>
+</div>
+</cms:if>
+<!-- /. Latest -->
+
+
+<!-- Categories -->
+<cms:capture into='categories_output'>  
+<cms:if k_is_folder ><cms:set current_page_folder=k_folder_name 'global'/></cms:if>
+<cms:folders masterpage=k_template_name extended_info='1' include_custom_fields='1'>
+<cms:set categories_folder_tttitle="<cms:if k_lang eq 'ar'><cms:show title_ar /><cms:else/><cms:show k_folder_title /></cms:if>"/>
+<cms:if k_folder_totalpagecount gt '0'>
+<li><a href="<cms:show_with_lc k_folder_link />" title="<cms:show categories_folder_tttitle/>" class="small color-secondary">
+<span><cms:show categories_folder_tttitle/></span>
+<span class="cat-count">(<cms:show k_folder_totalpagecount />)</span>
+</a></li>
+<cms:set hascategories_output='1' 'global' />
+</cms:if>
+</cms:folders>
+</cms:capture>
+
+<cms:if hascategories_output>
+<div class="col-sm-6 col-md-6 col-lg-12 my-3">			
+<div class="widget widget-posts px-4">
+<h5 class="widget__title mb-2"><cms:get 'locale.categories'/></h5>
+<div class="widget-content">
+<ul class="list-unstyled mb-0"><cms:show categories_output /></ul>
+</div>
+</div>
+</div>
+</cms:if>
+<!-- /. Categories -->
+
+
+
+<div class="col-sm-12 col-md-12 col-lg-12 my-3">			
+<div class="widget widget-posts px-4">
+<h5 class="widget__title"><cms:get 'locale.faq'/></h5>
+<div class="widget__content"><cms:embed 'packages/faq.html'/></div>
+</div>
+</div>
+
+<!-- /. FAQ -->
+
+
+</aside>
+</div>

@@ -1,0 +1,104 @@
+<cms:embed 'emails/email_header.html'/>
+<table bgcolor="#fdfeff" border="0" cellpadding="0" cellspacing="0" style="width:100%; border:1px solid #d3dee4">
+	<tbody>
+		<tr>
+			<td colspan="4" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff">
+				Applicant Details
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Title
+			</td>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Name
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_user_title/>
+			</td>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_contact_name/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Email
+			</td>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Phone
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_user_email/>
+			</td>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_user_phone/>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Gender
+			</td>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Nationality
+			</td>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				Current City or Emirate
+			</td>
+		</tr>
+
+		<tr>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_user_gender/>
+			</td>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_user_nationality/>
+			</td>
+			<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+				<cms:show frm_user_city/>
+			</td>
+		</tr>							  
+		<tr>
+			<td colspan="4" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff">
+				Other Details
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+				<cms:if k_is_folder && k_folder_id>Job Applied for<cms:else/>Interested Job Role</cms:if>
+		</td>
+		<td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+			Years of Experience
+		</td>
+		<td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:15px 5px 5px 10px;font-weight:600">
+			Availability
+		</td>
+	</tr>
+	<tr>
+         <td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+            <cms:if k_is_folder && k_folder_id><a href="<cms:show r_url_val/>" target="_blank" title="<cms:show k_folder_title/>"><cms:show k_folder_title/></a><cms:else/><cms:show frm_user_job_role/></cms:if>
+         </td>
+         <td style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+            <cms:show frm_user_experience/>
+         </td>
+         <td colspan="2" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:5px 5px 15px 10px">
+			<cms:show frm_user_availablity/>
+         </td>
+      </tr>
+
+
+      <tr>
+		  <td colspan="3" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;padding:8px 10px 8px 10px;background:#bda86e;color:#ffffff">Cover Letter</td>
+	  </tr>
+	  <tr>
+		  <td colspan="3" style="vertical-align:top;font-family:Arial,Helvetica,sans-serif;font-size:15px;padding:15px 5px 15px 10px">
+			  <cms:if frm_user_message><cms:show frm_user_message/><cms:else/>-</cms:if>
+		  </td>
+	  </tr>
+  </tbody>
+</table>
+<cms:embed 'emails/email_footer.html'/>

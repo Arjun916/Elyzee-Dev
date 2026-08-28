@@ -1,0 +1,31 @@
+<cms:trim "<cms:embed 'common/title_header.html'/>"/>
+<section class="blog-grid pt-40 pb-40">
+<div class="container">
+<cms:set g_content_temp = "content_<cms:show k_lang/>" />
+<cms:set g_content_val = "<cms:get_global g_content_temp/>" />
+<cms:if g_content_val><div class="row"><div class="col-12 text-block__desc mb-30 font-weight-bold color-secondary"><cms:do_shortcodes><cms:show g_content_val/></cms:do_shortcodes></div></div></cms:if>
+
+<cms:set curr_category_count="<cms:folders paginate='1' hierarchical='1' limit='1' masterpage='payment-plans.php'><cms:show k_total_folders /></cms:folders>"/>
+<cms:if curr_category_count && curr_category_count gt '1'>
+<div class="row portfolio-filters d-flex justify-content-start mb-20">
+	<cms:folders masterpage='payment-plans.php' extended_info='1'>
+		<cms:if k_first_child && k_total_folders gt '1'>
+			<a href="#" data-filter="*" class="col-auto btn btn__rounded m-1 btn__secondary bg__primary" title="<cms:get 'locale.all'/>"><cms:get 'locale.all'/></a>
+	    </cms:if>
+		<cms:pages masterpage='multi_lang_folder.php' page_title=k_folder_title limit='1'>
+			<a href="#" data-filter=".<cms:show k_folder_name/>" class="col-auto btn btn__secondary btn__rounded m-1" title='<cms:show "title_<cms:show k_lang/>"/>' data-bgcolor="<cms:show category_bgcolor/>"><cms:get "title_<cms:show k_lang/>"/></a>
+		</cms:pages>
+	</cms:folders>
+</div>
+</cms:if>
+	
+<div class="portfolio-container row row-flex">
+	<cms:pages masterpage="payment-plans.php" paginate='1' limit='60' orderby='weight' order='desc'>
+	<cms:trim "<cms:embed 'packages/payment_tile_view.html' />"/>
+	</cms:pages>
+</div>
+
+<cms:if has_pagination_output><cms:show pagination_output /></cms:if>
+
+</div>
+</section>

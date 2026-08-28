@@ -1,0 +1,145 @@
+
+	.droopmenu-navbar{
+		box-shadow: rgba(10, 8, 8, 0.57) 0px 0px 20px 0px;
+		background-color: rgba(22, 68, 160, 0.95);
+		background-image: url(../../img/vbg.jpg);
+		background-repeat: no-repeat;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;    
+		background-position: 0 0;
+	}
+	
+	.droopmenu-navbar:after{
+		content:"";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}	
+	
+	.dm-site-hero:after,
+	.droopmenu-navbar:after{
+		background: rgba(22, 68, 160, 0.95);
+		background: linear-gradient(rgba(22, 68, 160, 0.95) 0%, rgba(142, 57, 0, 0.88) 100%);
+	}
+	
+	/* TOP LEVEL LINK COLORS | HOVER COLOR */
+	.droopmenu > li > a,
+	.droopmenu > li > span,
+	.droopmenu li:hover > a{ color:#fff; }
+	
+	.droopmenu li li:hover > a{ color:#19459C; }
+	.droopmenu li ul li a{ }
+	
+	.droopmenu-toggle i:after,
+	.droopmenu-toggle i:before{ background: #fff; }
+	
+	/* TOP HEADER + VERTICAL SIDEBAR SOCIAL ICONS  */
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a i,
+	.droopmenu-vertical .droopmenu-social-icons a:not(.dms-icon) i,
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a:hover i,
+	.droopmenu-vertical .droopmenu-social-icons a:not(.dms-icon):hover i{ color: hsla(0, 0%, 100%, 0.6); }
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a,
+	.droopmenu-vertical .droopmenu-social-icons a:not(.dms-icon),
+	.droopmenu-extra .droopmenu .droopmenu-social-icons a:hover,
+	.droopmenu-vertical .droopmenu-social-icons a:not(.dms-icon):hover { border-color: hsla(0, 0%, 100%, 0.6); }					
+	
+	@media only screen and (min-width: 768px) {
+		/* VERTICAL SIDEBAR MENU STYLES */
+		.dms-open span i::after,
+		.dms-open span i::before,
+		.dms-close span i::after,
+		.dms-close span i::before  { background-color:#fff; }
+				
+		.dm-site-footer{ color:#fff; }	
+		
+		.dmv-search .dmv-search-form { background:rgba(255, 255, 255, 0.1); }	
+		.droopmenu-vertical .droopmenu li:hover > a{ background:transparent;  }
+		.droopmenu-vertical-wrapper .droopmenu-vertical .droopmenu li:hover > a{ background:#2C3E50; }
+		.dm-site-sidebar .droopmenu > li > a:before { background:rgba(255, 255, 255, 0.1); }	
+		.dm-site-overlay::before { background-color: rgba(0, 0, 0,0.5); }
+		.dm-site-overlay::after { background-color: rgba(0, 0, 0,0.1); }
+		.dmv-search .dmv-search-form .dmv-searchmit,
+		.dmv-search .dmv-search-form .dmv-search-field { color:#fff; }
+		
+		.dmv-search .dmv-search-form .dmv-search-field::-webkit-input-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form .dmv-search-field:-moz-placeholder{ color:rgba(255, 255, 255, 0.5);  }
+		.dmv-search .dmv-search-form .dmv-search-field::-moz-placeholder { color:rgba(255, 255, 255, 0.5); }
+		.dmv-search .dmv-search-form .dmv-search-field::-ms-input-placeholder { color:rgba(255, 255, 255, 0.5); }
+		.dmv-search .dmv-search-form .dmv-search-field:-ms-input-placeholder { color:rgba(255, 255, 255, 0.5); }	
+		.dmv-search .dmv-search-form .dmv-search-field::placeholder {  color:rgba(255, 255, 255, 0.5); }
+		
+		.dmv-search .dmv-search-form:hover .dmv-search-field::-webkit-input-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form:hover .dmv-search-field:-moz-placeholder{ color:rgba(255, 255, 255, 1);  }
+		.dmv-search .dmv-search-form:hover .dmv-search-field::-moz-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form:hover .dmv-search-field::-ms-input-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form:hover .dmv-search-field:-ms-input-placeholder { color:rgba(255, 255, 255, 1); }	
+		.dmv-search .dmv-search-form:hover .dmv-search-field::placeholder {  color:rgba(255, 255, 255, 1); }
+						
+	}
+	
+		
+	@media screen and (max-width: 767px) {
+		.droopmenu-navbar,
+		.droopmenu-offcanvas .droopmenu-nav{ 
+			box-shadow: rgba(10, 8, 8, 0.57) 0px 0px 20px 0px;
+			background-color: rgba(22, 68, 160, 0.95);
+			background-image: url(../../img/vbg.jpg);
+			background-repeat: no-repeat;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			background-size: cover;    
+			background-position: 0 0;		
+		}
+		
+		.droopmenu-navbar:after,
+		.droopmenu-offcanvas .droopmenu-nav:after{		
+			content:"";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background: rgba(22, 68, 160, 0.95);
+			background: linear-gradient(rgba(22, 68, 160, 0.95) 0%, rgba(142, 57, 0, 0.88) 100%);
+			z-index:-1;	
+			left: 0;
+			top: 0;		
+		}
+		
+		.droopmenu-header{ background: none; }
+		
+		.droopmenu > li > a,
+		.droopmenu > li > span{ color:#fff; }
+		.droopmenu li:hover > a{ color:hsla(0, 0%, 100%, 0.4); }
+		.droopmenu li.dmtoggle-open > a{ color:hsla(0, 0%, 100%, 0.4);  }
+		.droopmenu > li > a{ border-bottom-color:hsla(0, 0%, 100%, 0.12); }	
+		.droopmenu li ul li a{ border-bottom-color:#eee; }
+		.droopmenu-nav{ border-top:0; }				
+		.droopmenu-mclose { background:none; border-bottom:0; }
+		.droopmenu-mclose span:before, 
+		.droopmenu-mclose span:after { background-color:#fff; }
+		
+		.dmv-search .dmv-search-form { background:rgba(255, 255, 255, 0.1); }
+		.dmv-search .dmv-search-form .dmv-searchmit,
+		.dmv-search .dmv-search-form .dmv-search-field { color:#fff; }
+		.dmv-search .dmv-search-form .dmv-search-field::-webkit-input-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form .dmv-search-field:-moz-placeholder{ color:rgba(255, 255, 255, 0.5);  }
+		.dmv-search .dmv-search-form .dmv-search-field::-moz-placeholder { color:rgba(255, 255, 255, 0.5); }
+		.dmv-search .dmv-search-form .dmv-search-field::-ms-input-placeholder { color:rgba(255, 255, 255, 0.5); }
+		.dmv-search .dmv-search-form .dmv-search-field:-ms-input-placeholder { color:rgba(255, 255, 255, 0.5); }	
+		.dmv-search .dmv-search-form .dmv-search-field::placeholder {  color:rgba(255, 255, 255, 0.5); }
+		.dmv-search .dmv-search-form:hover .dmv-search-field::-webkit-input-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form:hover .dmv-search-field:-moz-placeholder{ color:rgba(255, 255, 255, 1);  }
+		.dmv-search .dmv-search-form:hover .dmv-search-field::-moz-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form:hover .dmv-search-field::-ms-input-placeholder { color:rgba(255, 255, 255, 1); }
+		.dmv-search .dmv-search-form:hover .dmv-search-field:-ms-input-placeholder { color:rgba(255, 255, 255, 1); }	
+		.dmv-search .dmv-search-form:hover .dmv-search-field::placeholder {  color:rgba(255, 255, 255, 1); }
+		
+		.dm-site-content{ 
+			top:-80px; 
+			margin-bottom:-80px;
+			position:relative; 
+		}			
+					
+	}		

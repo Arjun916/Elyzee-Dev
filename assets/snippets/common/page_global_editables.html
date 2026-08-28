@@ -1,0 +1,17 @@
+<cms:editable type='group' label='Title of the listing page' name='p_title_group' order='10' collapsed='0'>
+	<cms:editable name='title_row' type='row' order='10'>
+		<cms:editable type='text'  name="title_en" label="Title - English"  order='10' required='1' class='col-md-6'/>
+		<cms:editable type='text'  name="title_ar" label="Title - Arabic"  order='11' required='1' class='col-md-6'/>
+
+		<cms:editable type='textarea' name="short_content_en" label="Short Description Introduction - English" height='75'  order='20' required='1' class='col-md-6'/>
+		<cms:editable type='textarea' name="short_content_ar" label="Short Description Introduction - Arabic"  height='75' order='21' required='1' class='col-md-6'/>
+		
+		<cms:editable type='nicedit' name="content_en" label='Description in English' order='30' buttons="bold, italic, underline, ol, ul, link, unlink, removeformat, source" class='col-md-6'/>
+		<cms:editable type='nicedit' name="content_ar" label='Description in Arabic' order='31' buttons="bold, italic, underline, ol, ul, link, unlink, removeformat, source" class='col-md-6'/>
+		
+	</cms:editable>
+</cms:editable>
+
+<cms:embed 'common/page_seo_editables.inc'/>
+
+<cms:config_form_view><cms:field 'page_hits'><cms:show page_hits/></cms:field></cms:config_form_view>

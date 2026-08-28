@@ -1,0 +1,56 @@
+
+<cms:capture into='video_gallery_output'>
+<cms:show_repeatable 'video_links' >
+<cms:if video_url>
+<cms:set has_gallery_videos='1' 'global' />
+<div class="col-sm-6 col-md-4 col-lg-4 portfolio-item video">
+<div class="gallery-img">
+<a class="popup-video" href="<cms:youtube_url data=video_url />" title="<cms:get 'locale.videos'/>"><i class="fa-brands fa-youtube"></i></a>
+<img class="img-fluid lazy w-100" src="<cms:youtube_thumbnail data=intro_video default=placeholder />" alt="<cms:get 'locale.videos'/>">
+</div>
+</div>
+</cms:if>
+</cms:show_repeatable>
+</cms:capture>
+
+<cms:capture into='photo_gallery_output'>
+<cms:reverse_related_pages 'gallery_photo' masterpage='photo_gallery.php' orderby='weight' order='asc'>
+<cms:if gg_image>
+<div class="col-sm-6 col-md-4 col-lg-4 portfolio-item photo">
+<div class="gallery-img">
+<a class="popup-gallery-item" href="<cms:show gg_image/>" title="<cms:get 'locale.photos'/>"><i class="fas fa-eye"></i></a>
+<img class="img-fluid lazy w-100" src="<cms:thumbnail gg_image width='640' height='360'/>" alt="<cms:get 'locale.photos'/>">
+</div>
+</div>
+<cms:set has_gallery_photos='1' 'global' />
+</cms:if>
+</cms:reverse_related_pages>
+</cms:capture>
+
+
+<cms:if has_gallery_photos && has_gallery_videos >
+<div class="row" data-aos="fade-up" data-aos-delay="100">
+<div class="col-lg-12">
+<div class="portfolio-filters d-flex justify-content-start mb-20">
+<a href="#" data-filter="*" class="btn btn__primary btn__rounded mx-1 btn__secondary" title="<cms:get 'locale.all'/>"><cms:get 'locale.all'/></a>
+<a href="#" data-filter=".photo" class="btn btn__primary btn__rounded mx-1" title="<cms:get 'locale.photos'/>"><cms:get 'locale.photos'/></a>
+<a href="#" data-filter=".video" class="btn btn__primary btn__rounded mx-1" title="<cms:get 'locale.videos'/>"><cms:get 'locale.videos'/></a>
+</div>
+</div>
+</div>
+</cms:if>
+
+<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+<cms:if has_gallery_videos >
+<cms:show video_gallery_output />
+</cms:if>
+
+<cms:if has_gallery_photos >
+<cms:show photo_gallery_output />
+</cms:if>
+</div>
+
+
+
+
+

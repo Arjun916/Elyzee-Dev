@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /manage/
+Disallow: /assets/snippets/ 
+
+Sitemap: https://www.elyzee.ae/sitemap.xml

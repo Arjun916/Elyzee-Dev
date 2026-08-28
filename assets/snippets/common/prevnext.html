@@ -1,0 +1,35 @@
+<div class="container pb-5" data-aos="fade-up">
+<cms:set cur_page=k_page_name 'global' />
+<cms:set prev_page='' 'global' />
+<cms:set next_page='' 'global' />
+<cms:set found_cur_page='0' 'global' />
+
+<cms:pages skip_custom_fields='1'>
+<cms:if found_cur_page=='0' >
+<cms:if k_page_name==cur_page >
+<cms:set found_cur_page='1' 'global' />
+<cms:else />
+<cms:set prev_page=k_page_link 'global' />
+</cms:if>
+<cms:else />
+<cms:if next_page==''>
+<cms:set next_page=k_page_link 'global' />
+</cms:if>
+</cms:if>
+</cms:pages>
+
+
+<hr class="mt-0">
+<div class="d-flex justify-content-between">
+<cms:if prev_page>
+<div>
+<a href="<cms:show prev_page />" class="btn btn__primary" title="«"><i class="fas fa-long-arrow-alt-<cms:if k_lang eq 'ar'>right<cms:else/>left</cms:if>"></i></a></div>
+</cms:if>
+<div>&nbsp;</div>
+<cms:if next_page>
+<div>
+<a href="<cms:show next_page />" class="btn btn__primary" title="»"><i class="fas fa-long-arrow-alt-<cms:if k_lang eq 'ar'>left<cms:else/>right</cms:if>"></i></a>
+</div>
+</cms:if>
+</div>
+</div>
